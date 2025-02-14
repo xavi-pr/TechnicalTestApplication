@@ -18,7 +18,7 @@ public class DatabaseConfiguration {
     /**
      * Configure the SQLite database that we are going to use for the app
      */
-    public static void configuration() {
+    public static void configuration(boolean isTest) {
 
         // Connect to the database and perform the proper configuration
         // If it doesn't exist it creates the DB
@@ -31,8 +31,12 @@ public class DatabaseConfiguration {
                 System.out.println("A new database has been created.");
                 // Call to create the table
                 createTable(conn);
-                // Call to insert the date if the table was properly created
-                insertData(conn, Constants.CURRENT_RELATIVE_PATH);
+                // Only execute the script when it's not test
+                if (!isTest) {
+                    // Call to insert the date if the table was properly created
+                    insertData(conn, Constants.CURRENT_RELATIVE_PATH);
+                }
+
 
             }
         } catch (SQLException e) {

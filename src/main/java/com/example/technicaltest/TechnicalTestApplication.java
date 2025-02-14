@@ -11,7 +11,7 @@ public class TechnicalTestApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TechnicalTestApplication.class, args);
-        DatabaseConfiguration.configuration();
+        DatabaseConfiguration.configuration(false);
 
         // Drop the table before closing the app
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
